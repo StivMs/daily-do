@@ -20,7 +20,7 @@ const Header = ({ totalTodos, onShowTodo, showAddLabel }) => {
                     dir="left-to-right"
                     from="#00DFD8"
                     to="#007CF0">
-                    DailyDo test
+                    DailyDo
                      <PlaylistAddCheckIcon className={classes.icon} />
                 </Gradient>
             </h1>
