@@ -1,15 +1,28 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css';
 import Header from './layout/Header'
 import Todos from './todos/Todos'
 import AddTodo from './layout/AddTodo';
 
-
-
 function App() {
-  const [todos, setTodos] = useState([])
+  const savedTodos = JSON.parse(localStorage.getItem('todos'));
+  const [todos, setTodos] = useState(savedTodos || [])
+
   const [showAddTodo, setShowAddTodo] = useState(true)
+
+
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem('todos'));
+    if (items) {
+      setTodos(items);
+    }
+  }, []);
+
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   const addTodo = (newTodo) => {
     setTodos([...todos, newTodo])
